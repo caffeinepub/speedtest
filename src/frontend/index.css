@@ -1,0 +1,132 @@
+@font-face {
+  font-family: "BricolageGrotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/assets/fonts/Satoshi.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GeistMono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+
+    /* Dark navy speed test theme */
+    --background: 0.09 0.025 255;
+    --foreground: 0.96 0.008 265;
+
+    --card: 0.13 0.03 255;
+    --card-foreground: 0.96 0.008 265;
+
+    --popover: 0.13 0.03 255;
+    --popover-foreground: 0.96 0.008 265;
+
+    /* Electric cyan */
+    --primary: 0.78 0.2 198;
+    --primary-foreground: 0.09 0.025 255;
+
+    --secondary: 0.18 0.04 255;
+    --secondary-foreground: 0.96 0.008 265;
+
+    --muted: 0.18 0.035 255;
+    --muted-foreground: 0.55 0.02 265;
+
+    --accent: 0.78 0.2 198;
+    --accent-foreground: 0.09 0.025 255;
+
+    --destructive: 0.55 0.22 22;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.2 0.035 255;
+    --input: 0.2 0.035 255;
+    --ring: 0.78 0.2 198;
+
+    --radius: 0.75rem;
+
+    --chart-1: 0.78 0.2 198;
+    --chart-2: 0.65 0.18 265;
+    --chart-3: 0.72 0.19 175;
+    --chart-4: 0.6 0.2 310;
+    --chart-5: 0.68 0.21 55;
+
+    --sidebar: 0.11 0.028 255;
+    --sidebar-foreground: 0.96 0.008 265;
+    --sidebar-primary: 0.78 0.2 198;
+    --sidebar-primary-foreground: 0.09 0.025 255;
+    --sidebar-accent: 0.18 0.04 255;
+    --sidebar-accent-foreground: 0.96 0.008 265;
+    --sidebar-border: 0.2 0.035 255;
+    --sidebar-ring: 0.78 0.2 198;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+}
+
+@layer utilities {
+  .gauge-glow {
+    filter: drop-shadow(0 0 12px oklch(0.78 0.2 198 / 0.6));
+  }
+
+  .speed-number {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      oklch(0.18 0.04 255) 25%,
+      oklch(0.22 0.05 255) 50%,
+      oklch(0.18 0.04 255) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .pulse-ring {
+    animation: pulse-ring 1.5s ease-out infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% { transform: scale(0.95); opacity: 1; }
+    70% { transform: scale(1.05); opacity: 0.4; }
+    100% { transform: scale(0.95); opacity: 1; }
+  }
+
+  .count-up {
+    transition: all 0.15s ease-out;
+  }
+}
